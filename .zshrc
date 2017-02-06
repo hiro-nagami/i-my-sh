@@ -8,4 +8,5 @@ BASHRC=$HOME/.bashrc
 ZSHRC=$HOME/.zshrc
 
 # common alias
+# readlink or CURRENT_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 source $HOME/.settings/alias.sh

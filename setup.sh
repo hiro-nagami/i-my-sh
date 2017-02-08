@@ -18,11 +18,9 @@
 	ghq get https://github.com/git/git.git
 	ghq get https://github.com/hiro-nagami/mysh.git
 	cd $HOME/.ghq/github.com/hiro-nagami/mysh
-	echo "current: $(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
+	
 	unset MYSH_DIR
-	cat $(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
-	echo "myshdir: $MYSH_DIR"
 
 	ln -s $HOME/.ghq/github.com/git/git $GIT_REPOS
 

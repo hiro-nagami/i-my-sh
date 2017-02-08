@@ -1,7 +1,7 @@
 {
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
-    #ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 	brew install go
 	brew install npm
@@ -19,6 +19,7 @@
 	ghq get https://github.com/hiro-nagami/mysh.git
 	cd $HOME/.ghq/github.com/hiro-nagami/mysh
 
+	rm -rf $(cd -)
 	unset MYSH_DIR
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
@@ -31,14 +32,15 @@
 	ln -s $HOME/.ghq/github.com/sstephenson/rbenv $HOME/.rbenv
 	ln -s $HOME/.ghq/github.com/sstephenson/ruby-build $HOME/.rbenv/plugins/ruby-build
 
-	#ssh-keygen -t rsa
+	# ssh-keygen -t rsa
 
     if [ -z "$SOURCED_MYSH" ] && [ "${SOURCED_MYSH:-A}" = "${SOURCED_MYSH-A}" ]; then
         echo "source $MYSH_DIR/my-zsh.sh" >> $HOME/.zshrc
         echo 'export SOURCED_MYSH=true' >> $HOME/.zshrc
-    fi
+	fi
+
+	cd $HOME
 
 	zsh
-	source $MYSH_DIR/my-zsh.sh
 	source $HOME/.zshrc
 }

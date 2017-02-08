@@ -30,4 +30,4 @@ COMPLETION_WAITING_DOTS=true
 #     zle autosuggest-start
 # }
 
-zle -N zle-line-init
+# zle -N zle-line-init

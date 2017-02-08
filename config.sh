@@ -1,5 +1,5 @@
 # setup path
-export CURRENT_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
+export MYSH_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
 
 # GO
 export GOPATH=$HOME/.go

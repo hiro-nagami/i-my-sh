@@ -20,13 +20,14 @@ export PS1=$'%{\e[32m%}%n@%m%{\e[00m%}:%{\e[34m%}%35<...<%~%<..<%{\e[31m%}$(__gi
 
 
 # Setup zsh-autosuggestions
+source $GIT_REPOS/contrib/completion/git-prompt.sh
 source $HOME/.ghq/github.com/tarruda/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 COMPLETION_WAITING_DOTS=true
 
 # Enable autosuggestions automatically
-zle-line-init() {
-    zle autosuggest-start
-}
+# zle-line-init() {
+#     zle autosuggest-start
+# }
 
 zle -N zle-line-init

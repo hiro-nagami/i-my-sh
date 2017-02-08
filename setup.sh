@@ -18,7 +18,7 @@
 	ghq get https://github.com/git/git.git
 	ghq get https://github.com/hiro-nagami/mysh.git
 	cd $HOME/.ghq/github.com/hiro-nagami/mysh
-	
+
 	unset MYSH_DIR
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
@@ -34,7 +34,7 @@
 	#ssh-keygen -t rsa
 
     if [ -z "$SOURCED_MYSH" ] && [ "${SOURCED_MYSH:-A}" = "${SOURCED_MYSH-A}" ]; then
-        echo 'source $MYSH_DIR/my-zsh.sh' >> $HOME/.zshrc
+        echo "source $MYSH_DIR/my-zsh.sh" >> $HOME/.zshrc
         echo 'export SOURCED_MYSH=true' >> $HOME/.zshrc
     fi
 

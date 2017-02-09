@@ -6,6 +6,7 @@
 	brew install go
 	brew install npm
 	brew install peco
+	brew install shellcheck
 	brew tap Homebrew/bundle
 
 	git clone https://github.com/git/git.git $GIT_REPOS

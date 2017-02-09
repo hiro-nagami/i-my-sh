@@ -7,7 +7,7 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # git
-export GIT_REPOS=$HOME/.git
+export GIT_REPOS=$HOME/.ghq/github.com/git/git
 
 # setup zsh command history
 export HISTFILE=${HOME}/.zsh_history

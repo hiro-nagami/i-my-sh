@@ -3,7 +3,9 @@ export MYSH_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
 
 # GO
 export GOPATH=$HOME/.go
-export GOROOT=/usr/local/opt/go/libexec
+
+export GOROOT=/usr/local/opt/go/libexec	# for Mac
+# export GOROOT=/usr/local/go	# for CentOS
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 # git

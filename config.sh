@@ -8,7 +8,7 @@ if [ -z "$MYSH_CENTOS" ] && [ "${MYSH_CENTOS:-A}" = "${MYSH_CENTOS-A}" ]; then
     export GOROOT=/usr/local/go	# for CentOS
 elif [ -z "$MYSH_MACOS" ] && [ "${MYSH_MACOS:-A}" = "${MYSH_MACOS-A}" ]; then
     export GOROOT=/usr/local/opt/go/libexec	# for Mac
-else
+fi
 
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 

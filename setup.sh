@@ -11,6 +11,10 @@
 
 	mkdir $GOPATH
 
+	if $(type zsh > /dev/null 2>&1); then
+		sudo yum update && sudo yum -y install zsh
+	fi
+
 	go get github.com/motemen/ghq
 
 	ghq get https://github.com/git/git.git

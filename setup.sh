@@ -1,44 +1,67 @@
 {
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-	brew install go
-	brew install npm
-	brew install peco
-	brew install shellcheck
-	brew tap Homebrew/bundle
 
-	mkdir $GOPATH
-
-	if $(type zsh > /dev/null 2>&1); then
-		sudo yum update && sudo yum -y install zsh
+	if $(type ruby > /dev/null 2>&1); then
+		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	else
+		echo 'Ruby is not installed. Cannot install brew.'
 	fi
 
-	go get github.com/motemen/ghq
+	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+	echo 'Finished installing nvm.'
 
-	ghq get https://github.com/git/git.git
-	ghq get https://github.com/hiro-nagami/mysh.git
-	cd $HOME/.ghq/github.com/hiro-nagami/mysh
+	if $(type brew > /dev/null 2>&1); then
+		brew install go
+		brew install npm
+		brew install peco
+		brew install shellcheck
+		brew tap Homebrew/bundle
+	else
+		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
+	fi
 
-	#rm -rf $(cd -)
-	unset MYSH_DIR
-	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
-	ghq get https://github.com/zsh-users/zsh-autosuggestions.git
-	ghq get https://github.com/sstephenson/rbenv.git
-	ghq get https://github.com/sstephenson/ruby-build.git
+	if $(type go > /dev/null 2>&1); then
+		mkdir $GOPATH
+		go get github.com/motemen/ghq
+	else
+		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
+	fi
 
-	ln -s $HOME/.ghq/github.com/sstephenson/rbenv $HOME/.rbenv
-	ln -s $HOME/.ghq/github.com/sstephenson/ruby-build $HOME/.rbenv/plugins/ruby-build
+	if $(type ghq > /dev/null 2>&1); then
+		ghq get https://github.com/git/git.git
+		ghq get https://github.com/hiro-nagami/mysh.git
+		cd $HOME/.ghq/github.com/hiro-nagami/mysh
+
+		#rm -rf $(cd -)
+		unset MYSH_DIR
+		source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
+
+		ghq get https://github.com/zsh-users/zsh-autosuggestions.git
+		ghq get https://github.com/sstephenson/rbenv.git
+		ghq get https://github.com/sstephenson/ruby-build.git
+
+		ln -s $HOME/.ghq/github.com/sstephenson/rbenv $HOME/.rbenv
+		ln -s $HOME/.ghq/github.com/sstephenson/ruby-build $HOME/.rbenv/plugins/ruby-build
+	else
+		echo 'ghq is not installed.'
+	fi
 
 	if [ -z "$SOURCED_MYSH" ] && [ "${SOURCED_MYSH:-A}" = "${SOURCED_MYSH-A}" ]; then
 		echo "source $MYSH_DIR/my-zsh.sh" >> $HOME/.zshrc
 		echo 'export SOURCED_MYSH=true' >> $HOME/.zshrc
+	else
+		echo 'SOURCED_MYSH is already set.'
 	fi
 
 	cd $HOME
 
-	zsh
-	source $HOME/.zshrc
+	if $(type zsh > /dev/null 2>&1); then
+		sudo yum update && sudo yum -y install zsh
+		zsh
+		source $HOME/.zshrc
+	else
+		echo ' is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
+	fi
 }

@@ -1,4 +1,15 @@
 {
+	if [ "$(uname)" == 'Darwin' ]; then
+	  OS='Mac'
+	elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+	  OS='Linux'
+	elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then
+	  OS='Cygwin'
+	else
+	  echo "Your platform ($(uname -a)) is not supported."
+	  exit 1
+	fi
+
 	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
 
 
@@ -57,11 +68,21 @@
 
 	cd $HOME
 
+	if ! [ $(type zsh > /dev/null 2>&1) ]; then
+		echo 'zsh is not installed.'
+		if [ "$(OS)" == 'Mac']; then
+			if $(type brew > /dev/null 2>&1); then
+				brew install zsh
+			fi
+		elif [ "$(OS)" == 'Linux' ]; then
+			if $(type yum > /dev/null 2>&1); then
+				sudo yum update && sudo yum -y install zsh
+			fi
+		fi
+	fi
+
 	if $(type zsh > /dev/null 2>&1); then
-		sudo yum update && sudo yum -y install zsh
 		zsh
 		source $HOME/.zshrc
-	else
-		echo ' is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
 	fi
 }

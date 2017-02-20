@@ -19,8 +19,12 @@
 		echo 'Ruby is not installed. Cannot install brew.'
 	fi
 
-	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-	echo 'Finished installing nvm.'
+	echo "Do you install nvm? (y/n)"
+	read answer
+	if [ ${answer} = "y" ]; then
+		curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+		echo 'Finished installing nvm.'
+	fi
 
 	if $(type brew > /dev/null 2>&1); then
 		brew install go

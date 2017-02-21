@@ -19,7 +19,9 @@
 		echo 'Ruby is not installed. Cannot install brew.'
 	fi
 
+	printf "${GREEN}"
 	echo "Do you install nvm? (y/n)"
+	printf "${NORMAL}"
 	read answer
 	if [ ${answer} = "y" ]; then
 		curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
@@ -86,7 +88,6 @@
 	fi
 
 	if $(type zsh > /dev/null 2>&1); then
-		zsh
-		source $HOME/.zshrc
+		env zsh
 	fi
 }

@@ -1,32 +1,18 @@
 {
-	if [ "$(uname)" == 'Darwin' ]; then
-	  OS='Mac'
-	elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-	  OS='Linux'
-	elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW32_NT' ]; then
-	  OS='Cygwin'
-	else
-	  echo "Your platform ($(uname -a)) is not supported."
-	  exit 1
-	fi
-
-	source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
-
-
-	if $(type ruby > /dev/null 2>&1); then
+    if $(type ruby > /dev/null 2>&1); then
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	else
 		echo 'Ruby is not installed. Cannot install brew.'
 	fi
 
-	printf "${GREEN}"
-	echo "Do you install nvm? (y/n)"
-	printf "${NORMAL}"
-	read answer
-	if [ ${answer} = "y" ]; then
-		curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-		echo 'Finished installing nvm.'
-	fi
+    printf "${GREEN}"
+    echo "Do you install nvm? (y/n)"
+    printf "${NORMAL}"
+    read answer
+    if [ ${answer} = "y" ]; then
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+        echo 'Finished installing nvm.'
+    fi
 
 	if $(type brew > /dev/null 2>&1); then
 		brew install go
@@ -76,18 +62,9 @@
 
 	if ! [ $(type zsh > /dev/null 2>&1) ]; then
 		echo 'zsh is not installed.'
-		if [ "$(OS)" == 'Mac']; then
-			if $(type brew > /dev/null 2>&1); then
-				brew install zsh
-			fi
-		elif [ "$(OS)" == 'Linux' ]; then
-			if $(type yum > /dev/null 2>&1); then
-				sudo yum update && sudo yum -y install zsh
-			fi
-		fi
-	fi
 
-	if $(type zsh > /dev/null 2>&1); then
-		env zsh
+		if $(type brew > /dev/null 2>&1); then
+			brew install zsh
+		fi
 	fi
 }

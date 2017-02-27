@@ -1,6 +1,24 @@
 {
 	source "$(cd ../$(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
+	if [ ! $(which zsh | wc -l) ]; then
+		echo 'zsh is not installed. Do you install zsh? (y/n)'
+		read answer
+		if [ '$(answer)' == 'y' ]; then
+			if [ "$(OS)" == 'Mac']; then
+				if $(type brew > /dev/null 2>&1); then
+					brew install zsh
+				fi
+			elif [ "$(OS)" == 'Linux' ]; then
+				if $(type yum > /dev/null 2>&1); then
+					sudo yum update && sudo yum -y install zsh
+				fi
+			fi
+		else
+			exit
+		fi
+	fi
+
 	if [ "$(uname)" == 'Darwin' ]; then
 	  OS='Mac'
 	  ./mac-setup.sh
@@ -14,21 +32,7 @@
 	  exit 1
 	fi
 
-
-	if ! [ $(type zsh > /dev/null 2>&1) ]; then
-		echo 'zsh is not installed.'
-		if [ "$(OS)" == 'Mac']; then
-			if $(type brew > /dev/null 2>&1); then
-				brew install zsh
-			fi
-		elif [ "$(OS)" == 'Linux' ]; then
-			if $(type yum > /dev/null 2>&1); then
-				sudo yum update && sudo yum -y install zsh
-			fi
-		fi
-	fi
-
-	if $(type zsh > /dev/null 2>&1); then
+	if [ $(which zsh | wc -l) ]; then
 		env zsh
 	fi
 }

@@ -3,7 +3,7 @@ export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=100000
 
-source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
+source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
 # common alias
 source $MYSH_DIR/alias.sh

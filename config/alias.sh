@@ -10,6 +10,7 @@ alias la='ls -a'
 alias ll='l -l'
 alias lla='ll -a'
 alias lg='la | grep'
+alias t='touch'
 
 alias psgrp='ps aux | grep'
 

@@ -4,18 +4,18 @@
 	if [ ! $(which zsh | wc -l) ]; then
 		echo 'zsh is not installed. Do you install zsh? (y/n)'
 		read answer
-		if [ '$(answer)' == 'y' ]; then
-			if [ "$(OS)" == 'Mac']; then
-				if $(type brew > /dev/null 2>&1); then
-					brew install zsh
-				fi
-			elif [ "$(OS)" == 'Linux' ]; then
-				if $(type yum > /dev/null 2>&1); then
-					sudo yum update && sudo yum -y install zsh
-				fi
-			fi
-		else
+		if [ ! '$(answer)' == 'y' ]; then
 			exit
+		fi
+	fi
+
+	if [ "$(OS)" == 'Mac']; then
+		if $(type brew > /dev/null 2>&1); then
+			brew install zsh
+		fi
+	elif [ "$(OS)" == 'Linux' ]; then
+		if $(type yum > /dev/null 2>&1); then
+			sudo yum update && sudo yum -y install zsh
 		fi
 	fi
 

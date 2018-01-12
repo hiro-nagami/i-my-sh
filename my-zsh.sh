@@ -3,6 +3,10 @@ export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 export SAVEHIST=100000
 
+# Set environment for pyhton
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
 # common alias
@@ -21,7 +25,7 @@ export PS1=$'%{\e[32m%}%n@%m%{\e[00m%}:%{\e[34m%}%35<...<%~%<..<%{\e[31m%}$(__gi
 
 # Setup zsh-autosuggestions
 source $GIT_REPOS/contrib/completion/git-prompt.sh
-source $HOME/.ghq/github.com/tarruda/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.ghq/github.com/zsh-users/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=4'
 COMPLETION_WAITING_DOTS=true
 

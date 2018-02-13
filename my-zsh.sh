@@ -35,3 +35,7 @@ COMPLETION_WAITING_DOTS=true
 # }
 
 # zle -N zle-line-init
+
+## rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"

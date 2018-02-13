@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+
+  vars:
+    homebrew_taps:
+      - homebrew/dupes
+      - homebrew/versions
+      - homebrew/boneyard
+      - homebrew/binary
+
+  tasks:
+    - name: homebrew update
+      homebrew:
+        update_homebrew: yes

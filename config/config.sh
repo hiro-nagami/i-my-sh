@@ -5,7 +5,7 @@ export MYSH_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
 export GOPATH=$HOME/.go
 
 if [ -z "$MYSH_CENTOS" ] && [ "${MYSH_CENTOS:-A}" = "${MYSH_CENTOS-A}" ]; then
-    export GOROOT=/usr/local/opt/go/libexec	# for CentOS
+    export GOROOT=/usr/local/bin/go	# for CentOS
 elif [ -z "$MYSH_MACOS" ] && [ "${MYSH_MACOS:-A}" = "${MYSH_MACOS-A}" ]; then
     export GOROOT=/usr/local/opt/go/libexec	# for Mac
 fi

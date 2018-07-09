@@ -40,3 +40,6 @@ COMPLETION_WAITING_DOTS=true
 ## rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+## openssl
+PATH=/usr/local/opt/openssl/bin:$PATH

@@ -6,6 +6,7 @@ export SAVEHIST=100000
 # Set environment for pyhton
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+eval "$(pyenv init -)"
 
 source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
@@ -39,3 +40,6 @@ COMPLETION_WAITING_DOTS=true
 ## rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+## openssl
+PATH=/usr/local/opt/openssl/bin:$PATH

@@ -1,5 +1,7 @@
-# setup path
-export MYSH_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
+#/bin/sh
+if [ $DEBUG_MY_SH ]; then
+  echo "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")"
+fi
 
 # GO
 export GOPATH=$HOME/.go

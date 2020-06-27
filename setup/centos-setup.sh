@@ -25,14 +25,15 @@
 	if $(type go > /dev/null 2>&1); then
 		mkdir $GOPATH
 		go get github.com/motemen/ghq
+		git config --global ghq.root ~/.ghq
 	else
 		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
 	fi
 
 	if $(type ghq > /dev/null 2>&1); then
 		ghq get https://github.com/git/git.git
-		ghq get https://github.com/hiro-nagami/mysh.git
-		cd $HOME/.ghq/github.com/hiro-nagami/mysh
+		ghq get https://github.com/hiro-nagami/i-my-sh.git
+		cd $HOME/.ghq/github.com/hiro-nagami/i-my-sh
 
 		#rm -rf $(cd -)
 		unset MYSH_DIR

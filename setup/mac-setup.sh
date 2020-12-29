@@ -20,6 +20,8 @@
 		brew install peco
 		brew install shellcheck
 		brew tap Homebrew/bundle
+		brew cask install java
+		brew install jenv
 	else
 		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
 	fi

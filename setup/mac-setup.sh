@@ -20,6 +20,8 @@
 		brew install peco
 		brew install shellcheck
 		brew tap Homebrew/bundle
+		brew cask install java
+		brew install jenv
 	else
 		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
 	fi
@@ -34,12 +36,12 @@
 
 	if $(type ghq > /dev/null 2>&1); then
 		ghq get https://github.com/git/git.git
-		ghq get https://github.com/hiro-nagami/mysh.git
-		cd $HOME/.ghq/github.com/hiro-nagami/mysh
+		ghq get https://github.com/hiro-nagami/i-my-sh.git
+		cd $HOME/.ghq/github.com/hiro-nagami/i-my-sh
 
 		#rm -rf $(cd -)
 		unset MYSH_DIR
-		source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config.sh"
+		source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
 		ghq get https://github.com/zsh-users/zsh-autosuggestions.git
 		ghq get https://github.com/sstephenson/rbenv.git

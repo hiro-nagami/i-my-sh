@@ -7,6 +7,8 @@ fi
 alias srczsh='source $ZSHRC && echo sink zsh.'
 alias vimzsh='vim $ZSHRC && echo open zsh.'
 alias editzsh='vimzsh && srczsh'
+alias symbolicate='DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer" | /Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash'
+alias brew="PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew"
 
 alias l='ls'
 alias la='ls -a'

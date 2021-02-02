@@ -48,11 +48,13 @@ setopt PROMPT_SUBST
 if type brew > /dev/null 2>&1; then
   fpath=($(brew --prefix)/sharfe/zsh/site-functions $fpath)
 fi
+autoload -U promptinit; promptinit
+prompt pure
 autoload -U compinit
 compinit -u
 
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1=$'%{\e[32m%}%n@%m%{\e[00m%}:%{\e[34m%}%35<...<%~%<..<%{\e[31m%}$(__git_ps1)%{\e[00m%}\$ '
+# export PS1=$'%{\e[32m%}%n@%m%{\e[00m%}:%{\e[34m%}%35<...<%~%<..<%{\e[31m%}$(__git_ps1)%{\e[00m%}\$ '
 
 # Setup zsh-autosuggestions
 if [[ -e $GIT_REPOS/contrib/completion/git-prompt.sh ]]; then

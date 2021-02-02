@@ -13,6 +13,9 @@
 		if $(type brew > /dev/null 2>&1); then
 			brew install zsh
 		fi
+		if $(type npm > /dev/null 2>&1); then
+			npm install --global pure-prompt
+		fi
 	elif [ "$(OS)" == 'Linux' ]; then
 		if $(type yum > /dev/null 2>&1); then
 			sudo yum update && sudo yum -y install zsh

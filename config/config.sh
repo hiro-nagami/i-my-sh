@@ -4,12 +4,17 @@ if $DEBUG_MY_SH ; then
 fi
 
 # GO
-export GOPATH=$HOME/.go
+# export GOPATH=$HOME/.go
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
 
 if [ -n "$MYSH_CENTOS" ] && [ "${MYSH_CENTOS:-A}" = "${MYSH_CENTOS-A}" ]; then
     export GOROOT=/usr/local/bin/go	# for CentOS
 elif [ -n "$MYSH_MACOS" ] && [ "${MYSH_MACOS:-A}" = "${MYSH_MACOS-A}" ]; then
-    export GOROOT=/usr/local/opt/go/libexec	# for Mac
+    # export GOROOT=/usr/local/opt/go/libexec	# for Mac
 fi
 
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin

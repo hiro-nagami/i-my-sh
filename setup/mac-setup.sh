@@ -15,8 +15,18 @@
         echo 'Finished installing nvm.'
     fi
 
+	if $(type goenv > /dev/null 2>&1); then
+		git clone https://github.com/syndbg/goenv.git ~/.goenv
+		echo 'Finished installing goenv.'
+	fi
+
+	if $(type goenv > /dev/null 2>&1); then
+		goenv install 1.17.3
+		goenv global 1.17.3
+		echo 'Finished installing go.'
+	fi
+
 	if $(type brew > /dev/null 2>&1); then
-		brew install go
 		brew install npm
 		brew install peco
 		brew install shellcheck
@@ -29,8 +39,7 @@
 
 
 	if $(type go > /dev/null 2>&1); then
-		mkdir $GOPATH
-		go get github.com/motemen/ghq
+		go get github.com/x-motemen/ghq
 	else
 		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
 	fi

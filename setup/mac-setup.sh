@@ -1,6 +1,7 @@
 {
     if $(type ruby > /dev/null 2>&1); then
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile        
 	else
 		echo 'Ruby is not installed. Cannot install brew.'
 	fi
@@ -20,7 +21,7 @@
 		brew install peco
 		brew install shellcheck
 		brew tap Homebrew/bundle
-		brew cask install java
+		brew install java
 		brew install jenv
 	else
 		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'

@@ -40,6 +40,7 @@
 
 	if $(type go > /dev/null 2>&1); then
 		go get github.com/x-motemen/ghq
+		git config --global ghq.root '~/.ghq'
 	else
 		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
 	fi

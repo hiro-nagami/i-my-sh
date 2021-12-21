@@ -5,7 +5,7 @@
     printf "${NORMAL}"
     read answer
     if [ ${answer} = "y" ]; then
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.39.0/install.sh | bash
         echo 'Finished installing nvm.'
     fi
 

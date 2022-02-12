@@ -21,7 +21,10 @@ source $MYSH_DIR/config/config.sh
 source $MYSH_DIR/config/path.sh
 source $MYSH_DIR/config/alias.sh
 source $MYSH_DIR/config/git-alias.sh
-source $MYSH_DIR/others/other_imports.sh
+
+if [[ -e $MYSH_DIR/others/other_imports.sh ]]; then
+  source $MYSH_DIR/others/other_imports.sh
+fi
 
 if [[ -e ./others/others_imports.sh ]]; then
   source ./others/others_imports.sh

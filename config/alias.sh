@@ -15,7 +15,7 @@ alias ll='l -l'
 alias lla='ll -a'
 alias lg='la | grep'
 alias t='touch'
-
+alias mine='open -na "RubyMine.app" --args "$@"'
 alias get_script_path=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
 alias get_script_name=$(basename "$(test -L "$0" && readlink "$0" || echo "$0")")
 

@@ -7,7 +7,7 @@ PATH=/usr/local/bin:$PATH
 PATH=$HOME/.fastlane/bin:$PATH
 PATH=$HOME/.rbenv/bin:$PATH
 PATH=/usr/local/sbin:$PATH
-PATH=$HOME/flutter/bin:$PATH
+PATH=$HOME/.flutter/bin:$PATH
 
 ## openssl
 PATH=/usr/local/opt/openssl/bin:$PATH

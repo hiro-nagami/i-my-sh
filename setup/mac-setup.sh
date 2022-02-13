@@ -7,7 +7,9 @@
 	fi
 
 	if $(type brew > /dev/null 2>&1); then
+		brew upgrade
 		brew bundle
+		brew upgrade goenv
 	else
 		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
 	fi

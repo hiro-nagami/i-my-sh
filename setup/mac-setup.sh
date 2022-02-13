@@ -6,18 +6,10 @@
 		echo 'Ruby is not installed. Cannot install brew.'
 	fi
 
-    printf "${GREEN}"
-    echo "Do you install nvm? (y/n)"
-    printf "${NORMAL}"
-    read answer
-    if [ ${answer} = "y" ]; then
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-        echo 'Finished installing nvm.'
-    fi
-
-	if $(type goenv > /dev/null 2>&1); then
-		git clone https://github.com/syndbg/goenv.git ~/.goenv
-		echo 'Finished installing goenv.'
+	if $(type brew > /dev/null 2>&1); then
+		brew bundle
+	else
+		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
 	fi
 
 	if $(type goenv > /dev/null 2>&1); then
@@ -26,18 +18,18 @@
 		echo 'Finished installing go.'
 	fi
 
-	if $(type brew > /dev/null 2>&1); then
-		brew bundle
-	else
-		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
-	fi
-
-
 	if $(type go > /dev/null 2>&1); then
 		go get github.com/x-motemen/ghq
 		git config --global ghq.root '~/.ghq'
 	else
 		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
+	fi
+
+
+	if $(type rbenv > /dev/null 2>&1); then
+		rbenv install 2.6.0
+		rbenv global 2.6.0
+		echo 'Finished installing ruby.'
 	fi
 
 	if $(type ghq > /dev/null 2>&1); then

@@ -27,12 +27,7 @@
 	fi
 
 	if $(type brew > /dev/null 2>&1); then
-		brew install npm
-		brew install peco
-		brew install shellcheck
-		brew tap Homebrew/bundle
-		brew install java
-		brew install jenv
+		brew bundle
 	else
 		echo 'Brew is not installed. Cannot install go, npm, peco, shellcheck and brewBundler.'
 	fi

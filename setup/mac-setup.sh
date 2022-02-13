@@ -33,7 +33,7 @@
 
 	if $(type go > /dev/null 2>&1); then
 		echo 'Start installing go packages via go.'
-		go mod tidy
+		go install https://github.com/x-motemen/ghq@latest
 		git config --global ghq.root '~/.ghq'
 		echo 'Finished installing go packages.'
 	else

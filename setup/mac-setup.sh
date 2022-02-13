@@ -1,6 +1,6 @@
 {
     if $(type ruby > /dev/null 2>&1); then
-		echo 'Start installing homebrew.'
+		echo 'Start installing homebrew via ruby.'
 		ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 		echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
 		echo 'Finished installing homebrew.'
@@ -18,31 +18,31 @@
 	fi
 
 	if $(type git > /dev/null 2>&1); then
-		echo 'Start installing goenv.'
+		echo 'Start installing goenv via git.'
 		# https://github.com/syndbg/goenv
 		git clone https://github.com/syndbg/goenv.git ~/.goenv
 		echo 'Finished installing goenv.'
 	fi
 
 	if $(type goenv > /dev/null 2>&1); then
-		echo 'Start installing go.'
+		echo 'Start installing go via goenv.'
 		goenv install 1.17.3
 		goenv global 1.17.3
 		echo 'Finished installing go.'
 	fi
 
 	if $(type go > /dev/null 2>&1); then
-		echo 'Start installing ghq.'
-		go get github.com/x-motemen/ghq
+		echo 'Start installing go packages via go.'
+		go mod tidy
 		git config --global ghq.root '~/.ghq'
-		echo 'Finished installing ghq.'
+		echo 'Finished installing go packages.'
 	else
 		echo 'Go is not installed. Cannot install go, npm, peco, shellcheck and ghq.'
 	fi
 
 
 	if $(type rbenv > /dev/null 2>&1); then
-		echo 'Start installing ruby.'
+		echo 'Start installing ruby via rbenv.'
 		rbenv install 2.6.0
 		rbenv global 2.6.0
 		echo 'Finished installing ruby.'
@@ -53,22 +53,17 @@
 	fi
 
 	if $(type ghq > /dev/null 2>&1); then
-		echo 'Start installing ghq packages.'
+		echo 'Start installing git repository via ghq.'
 		ghq get https://github.com/git/git.git
 		ghq get https://github.com/hiro-nagami/i-my-sh.git
+		ghq get https://github.com/zsh-users/zsh-autosuggestions.git
 		cd $HOME/.ghq/github.com/hiro-nagami/i-my-sh
 
 		#rm -rf $(cd -)
 		unset MYSH_DIR
 		source "$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)/config/config.sh"
 
-		ghq get https://github.com/zsh-users/zsh-autosuggestions.git
-		ghq get https://github.com/sstephenson/rbenv.git
-		ghq get https://github.com/sstephenson/ruby-build.git
-
-		ln -s $HOME/.ghq/github.com/sstephenson/rbenv $HOME/.rbenv
-		ln -s $HOME/.ghq/github.com/sstephenson/ruby-build $HOME/.rbenv/plugins/ruby-build
-		echo 'Finished installing ghq packages.'
+		echo 'Finished installing git repository.'
 	else
 		echo 'ghq is not installed.'
 	fi

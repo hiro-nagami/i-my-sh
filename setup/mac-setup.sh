@@ -32,6 +32,10 @@
 		echo 'Finished installing ruby.'
 	fi
 
+	if $(type gem > /dev/null 2>&1); then
+		gem install cocoapods
+	fi
+
 	if $(type ghq > /dev/null 2>&1); then
 		ghq get https://github.com/git/git.git
 		ghq get https://github.com/hiro-nagami/i-my-sh.git

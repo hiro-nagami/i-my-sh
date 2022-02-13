@@ -49,7 +49,9 @@
 	fi
 
 	if $(type gem > /dev/null 2>&1); then
+		echo 'Start installing cocoapods via gem.'
 		gem install cocoapods
+		echo 'Finished installing cocoapods via gem.'
 	fi
 
 	if $(type ghq > /dev/null 2>&1); then

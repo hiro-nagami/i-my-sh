@@ -5,7 +5,6 @@ tap "homebrew/cask"
 tap "homebrew/core"
 tap "ktr0731/evans"
 brew "docker"
-brew "docker-compose"
 brew "docker-machine"
 brew "rbenv"
 # Cannot latest goenv via homebrew

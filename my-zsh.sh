@@ -35,7 +35,7 @@ if type pyenv > /dev/null 2>&1; then
 fi
 
 if type jenv > /dev/null 2>&1; then
-  export JENV_ROOT=/usr/local/var/jenv
+  export JENV_ROOT=$HOME/.jenv
   eval "$(jenv init -)"
   export JAVA_HOME="$(jenv prefix)"
   alias jenv_set_java_home='export JAVA_HOME="$(jenv prefix)"'

@@ -58,7 +58,7 @@ autoload -U compinit
 compinit -u
 
 GIT_PS1_SHOWDIRTYSTATE=true
-export PS1=$'\e[104m %D{%Y/%m/%d} %* \e[1;46m %~% \e[0;46m%{\$(__git_ps1 " (%s)")%} \e[49m \e[0m \n\$ '
+export PS1=$'\e[104m %D{%Y/%m/%d} %* \e[1;46m %C \e[0;46m%{\$(__git_ps1 " (%s)")%} \e[49m \e[0m \n\$ '
 
 # Setup zsh-autosuggestions
 if [[ -e $GIT_REPOS/contrib/completion/git-prompt.sh ]]; then
